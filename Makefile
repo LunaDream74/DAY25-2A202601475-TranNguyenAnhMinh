@@ -22,4 +22,4 @@ docker-down:
 	docker compose down
 
 clean:
-	rm -rf .pytest_cache .ruff_cache .mypy_cache reports/metrics.json reports/final_report.md
+	rm -rf .pytest_cache .ruff_cache .mypy_cache

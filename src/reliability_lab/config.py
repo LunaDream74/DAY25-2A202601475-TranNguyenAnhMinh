@@ -30,12 +30,19 @@ class CacheConfig(BaseModel):
 
 class LoadTestConfig(BaseModel):
     requests: int = Field(gt=0)
+    random_seed: int = 20260827
 
 
 class ScenarioConfig(BaseModel):
     name: str
     description: str = ""
     provider_overrides: dict[str, float] = Field(default_factory=dict)
+    min_availability: float = Field(default=0.95, ge=0.0, le=1.0)
+    min_fallback_success_rate: float | None = Field(default=None, ge=0.0, le=1.0)
+    max_error_rate: float | None = Field(default=None, ge=0.0, le=1.0)
+    min_circuit_open_count: int = Field(default=0, ge=0)
+    max_circuit_open_count: int | None = Field(default=None, ge=0)
+    require_recovery: bool = False
 
 
 class LabConfig(BaseModel):
